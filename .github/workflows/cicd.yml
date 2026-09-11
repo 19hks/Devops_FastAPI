@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main ]
 
-job:
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -23,9 +23,9 @@ job:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
     
-    deploy:
-        runs-on: ubuntu-latest
-        need: build
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
     steps:
         - name: Trigger Deployment
           run:
